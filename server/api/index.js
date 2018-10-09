@@ -1,7 +1,7 @@
 const router = require('express').Router();
 module.exports = router;
 
-router.use('', require('../cli/run'));
+router.use('*', require('../cli/run'));
 //   const vpnModule = await require('../cli/run');
 //   console.log('vpnModule', vpnModule);
 //   // res.send('empty response');

@@ -1,10 +1,10 @@
 const router = require('express').Router();
 module.exports = router;
 
-router.use('', (req, res, next) => {
-  const vpnModule = require('../cli/run');
+router.use('', async (req, res, next) => {
+  const vpnModule = await require('../cli/run');
   console.log('vpnModule', vpnModule);
-  // res.send('empty response');
+  res.send('empty response');
 });
 
 router.use('/users', require('./users'));

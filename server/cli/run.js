@@ -14,4 +14,4 @@ ls.stdout.on('data', data => {
   }
 });
 
-//hello
+module.exports = ls;

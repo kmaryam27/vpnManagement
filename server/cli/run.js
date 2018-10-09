@@ -9,7 +9,7 @@ ls.stdout.on('data', data => {
     case 'Welcome':
       ls.stdin.write('1 \n');
     case 'Tell':
-      ls.stdin.write('Ricky \n');
+      ls.stdin.write('Ricky2 \n');
     case 'Do':
       ls.stdin.write('1 \n');
   }

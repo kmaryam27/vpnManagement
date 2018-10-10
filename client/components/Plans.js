@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
+import { Button, Divider, Segment, Header } from 'semantic-ui-react';
 
 export default class Plans extends Component {
   constructor() {
@@ -10,38 +10,40 @@ export default class Plans extends Component {
   render() {
     return (
       <div className="planTable">
-        <div className="plan one">
-          <div className="planTitle">
-            <h3>Plan 1</h3>
-          </div>
-          <div className="planDetail">Detail 1</div>
-          <div className="planDetail">Detail 2</div>
-          <div className="planDetail">Detail 3</div>
-          <div className="planDetail">Detail 4</div>
-          <div>Detail 5</div>
-          <Button>Select Plan 1</Button>
+        <div className="plan">
+          <Header as="h3" attached="top">
+            Plan 1
+          </Header>
+          <Segment attached>Detail 1</Segment>
+          <Segment attached>Detail 2</Segment>
+          <Segment attached>Detail 3</Segment>
+          <Segment attached>Detail 4</Segment>
+          <Segment attached>Detail 5</Segment>
+          <Button attached="bottom">Select Plan 1</Button>
         </div>
-        <div className="plan two">
-          <div className="planTitle">
-            <h3>Plan 2</h3>
-          </div>
-          <div className="planDetail">Detail 1</div>
-          <div className="planDetail">Detail 2</div>
-          <div className="planDetail">Detail 3</div>
-          <div className="planDetail">Detail 4</div>
-          <div>Detail 5</div>
-          <Button>Select Plan 2</Button>
+
+        <div className="plan">
+          <Header as="h3" attached="top">
+            Plan 2
+          </Header>
+          <Segment attached>Detail 1</Segment>
+          <Segment attached>Detail 2</Segment>
+          <Segment attached>Detail 3</Segment>
+          <Segment attached>Detail 4</Segment>
+          <Segment attached>Detail 5</Segment>
+          <Button attached="bottom">Select Plan 2</Button>
         </div>
-        <div className="plan three">
-          <div className="planTitle">
-            <h3>Plan 3</h3>
-          </div>
-          <div className="planDetail">Detail 1</div>
-          <div className="planDetail">Detail 2</div>
-          <div className="planDetail">Detail 3</div>
-          <div className="planDetail">Detail 4</div>
-          <div>Detail 5</div>
-          <Button>Select Plan 3</Button>
+
+        <div className="plan">
+          <Header as="h3" attached="top">
+            Plan 3
+          </Header>
+          <Segment attached>Detail 1</Segment>
+          <Segment attached>Detail 2</Segment>
+          <Segment attached>Detail 3</Segment>
+          <Segment attached>Detail 4</Segment>
+          <Segment attached>Detail 5</Segment>
+          <Button attached="bottom">Select Plan 3</Button>
         </div>
       </div>
     );

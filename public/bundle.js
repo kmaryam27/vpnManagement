@@ -203,42 +203,57 @@ function (_Component) {
       return _react.default.createElement("div", {
         className: "planTable"
       }, _react.default.createElement("div", {
-        className: "plan one"
-      }, _react.default.createElement("div", {
-        className: "planTitle"
-      }, _react.default.createElement("h3", null, "Plan 1")), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 1"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 2"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 3"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 4"), _react.default.createElement("div", null, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, null, "Select Plan 1")), _react.default.createElement("div", {
-        className: "plan two"
-      }, _react.default.createElement("div", {
-        className: "planTitle"
-      }, _react.default.createElement("h3", null, "Plan 2")), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 1"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 2"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 3"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 4"), _react.default.createElement("div", null, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, null, "Select Plan 2")), _react.default.createElement("div", {
-        className: "plan three"
-      }, _react.default.createElement("div", {
-        className: "planTitle"
-      }, _react.default.createElement("h3", null, "Plan 3")), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 1"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 2"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 3"), _react.default.createElement("div", {
-        className: "planDetail"
-      }, "Detail 4"), _react.default.createElement("div", null, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, null, "Select Plan 3")));
+        className: "plan"
+      }, _react.default.createElement(_semanticUiReact.Header, {
+        as: "h3",
+        attached: "top"
+      }, "Plan 1"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 1"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 2"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 3"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 4"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, {
+        attached: "bottom"
+      }, "Select Plan 1")), _react.default.createElement("div", {
+        className: "plan"
+      }, _react.default.createElement(_semanticUiReact.Header, {
+        as: "h3",
+        attached: "top"
+      }, "Plan 2"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 1"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 2"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 3"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 4"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, {
+        attached: "bottom"
+      }, "Select Plan 2")), _react.default.createElement("div", {
+        className: "plan"
+      }, _react.default.createElement(_semanticUiReact.Header, {
+        as: "h3",
+        attached: "top"
+      }, "Plan 3"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 1"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 2"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 3"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 4"), _react.default.createElement(_semanticUiReact.Segment, {
+        attached: true
+      }, "Detail 5"), _react.default.createElement(_semanticUiReact.Button, {
+        attached: "bottom"
+      }, "Select Plan 3")));
     }
   }]);
 

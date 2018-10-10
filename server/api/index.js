@@ -3,6 +3,7 @@ module.exports = router;
 
 router.use('', async (req, res, next) => {
   const vpnModule = await require('../cli/run');
+  vpnModule();
   console.log('vpnModule', vpnModule);
   res.send('empty response');
 });

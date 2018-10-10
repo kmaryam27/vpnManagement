@@ -10,7 +10,7 @@ const addUser = () => {
       case 'Welcome':
         ls.stdin.write('1 \n');
       case 'Tell':
-        ls.stdin.write('Ricky4 \n');
+        ls.stdin.write('Ricky5 \n');
       case 'Do':
         ls.stdin.write('1 \n');
     }

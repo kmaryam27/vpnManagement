@@ -131,15 +131,78 @@ exports.default = _default;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Home;
+exports.Home = Home;
+exports.default = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _IP = __webpack_require__(/*! ./IP */ "./client/components/IP.js");
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function Home(props) {
   return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Hello and Welcome to the Home Component!"));
 }
+
+var mapDispatch = function mapDispatch(state) {
+  return {// getIP: state.miscellaneous.grabIP,
+  };
+};
+
+var _default = (0, _reactRedux.connect)(null, mapDispatch)(Home);
+
+exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/components/IP.js":
+/*!*********************************!*\
+  !*** ./client/components/IP.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.IP = IP;
+exports.default = void 0;
+
+var _react = _interopRequireDefault(__webpack_require__(/*! react */ "./node_modules/react/index.js"));
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function IP(props) {
+  if (props.getIP) {
+    props.getIP();
+  } else {
+    console.log('props: ', props);
+  }
+
+  return _react.default.createElement("div", null, _react.default.createElement("a", null, "Just Confirming We're Here"), props.ip != undefined ? _react.default.createElement("div", null, "Your IP Address is + props.ip") : null);
+}
+
+var mapState = function mapState(state) {
+  return {
+    ip: state.ip
+  };
+};
+
+var mapDispatch = function mapDispatch(dispatch) {
+  return {// getIP: state.miscellaneous.grabIP,
+  };
+};
+
+var _default = (0, _reactRedux.connect)(mapState, mapDispatch)(IP);
+
+exports.default = _default;
 
 /***/ }),
 
@@ -417,6 +480,12 @@ Object.defineProperty(exports, "Plans", {
     return _Plans.default;
   }
 });
+Object.defineProperty(exports, "IP", {
+  enumerable: true,
+  get: function get() {
+    return _IP.default;
+  }
+});
 
 var _navbar = _interopRequireDefault(__webpack_require__(/*! ./navbar */ "./client/components/navbar.js"));
 
@@ -427,6 +496,8 @@ var _authForm = __webpack_require__(/*! ./auth-form */ "./client/components/auth
 var _Home = _interopRequireDefault(__webpack_require__(/*! ./Home */ "./client/components/Home.js"));
 
 var _Plans = _interopRequireDefault(__webpack_require__(/*! ./Plans */ "./client/components/Plans.js"));
+
+var _IP = _interopRequireDefault(__webpack_require__(/*! ./IP */ "./client/components/IP.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -833,6 +904,7 @@ function (_Component) {
 
 
 var mapState = function mapState(state) {
+  console.log('state is', state);
   return {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
@@ -843,7 +915,10 @@ var mapState = function mapState(state) {
 var mapDispatch = function mapDispatch(dispatch) {
   return {
     loadInitialData: function loadInitialData() {
-      dispatch((0, _store.me)());
+      dispatch((0, _store.grabIp)()); // console.log('grabIP is', grabIP());
+      // console.log('me is', me);
+      // dispatch(me());
+      // console.log('after dispatching ME');
     }
   };
 }; // The `withRouter` wrapper makes sure that updates are not blocked
@@ -901,12 +976,26 @@ Object.keys(_user).forEach(function (key) {
   });
 });
 
+var _miscellaneous = _interopRequireWildcard(__webpack_require__(/*! ./miscellaneous */ "./client/store/miscellaneous.js"));
+
+Object.keys(_miscellaneous).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  if (Object.prototype.hasOwnProperty.call(_exportNames, key)) return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _miscellaneous[key];
+    }
+  });
+});
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var reducer = (0, _redux.combineReducers)({
-  user: _user.default
+  user: _user.default,
+  miscellaneous: _miscellaneous.default
 });
 var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk.default, (0, _reduxLogger.default)({
   collapsed: true
@@ -914,6 +1003,125 @@ var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.app
 var store = (0, _redux.createStore)(reducer, middleware);
 var _default = store;
 exports.default = _default;
+
+/***/ }),
+
+/***/ "./client/store/miscellaneous.js":
+/*!***************************************!*\
+  !*** ./client/store/miscellaneous.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+exports.grabIp = void 0;
+
+var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var defaultState = {
+  loading: false
+}; // Action Types
+
+var GET_IP = 'GET_IP';
+var SET_IP = 'SET_IP'; // Action Creators
+
+var getIP = function getIP() {
+  return {
+    type: 'GET_IP',
+    loading: true
+  };
+};
+
+var setIp = function setIp(ip) {
+  console.log('inside setIP');
+  return {
+    type: SET_IP,
+    ip: ip
+  };
+}; // Thunk Creators
+// export const grabIp = () => async dispatch => {
+// };
+
+
+var grabIp = function grabIp() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee(dispatch) {
+        var data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                console.log('data should be');
+                _context.next = 4;
+                return _axios.default.get('/api/users/ip');
+
+              case 4:
+                data = _context.sent;
+                dispatch(setIp(data.data || 1));
+                _context.next = 11;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context["catch"](0);
+                console.error(_context.t0);
+
+              case 11:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this, [[0, 8]]);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }()
+  );
+}; // Reducer
+
+
+exports.grabIp = grabIp;
+
+function _default() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case GET_IP:
+      return _objectSpread({}, state, {
+        loading: true
+      });
+
+    case SET_IP:
+      return action.ip;
+
+    default:
+      return state;
+  }
+}
 
 /***/ }),
 
@@ -931,7 +1139,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = _default;
-exports.logout = exports.auth = exports.me = void 0;
+exports.grab = exports.logout = exports.auth = exports.me = void 0;
 
 var _axios = _interopRequireDefault(__webpack_require__(/*! axios */ "./node_modules/axios/index.js"));
 
@@ -1117,12 +1325,59 @@ var logout = function logout() {
     }()
   );
 };
+
+exports.logout = logout;
+
+var grab = function grab() {
+  return (
+    /*#__PURE__*/
+    function () {
+      var _ref4 = _asyncToGenerator(
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee4(dispatch) {
+        var _ref5, data;
+
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.prev = 0;
+                _context4.next = 3;
+                return _axios.default.get('/api/users/ip');
+
+              case 3:
+                _ref5 = _context4.sent;
+                data = _ref5.data;
+                console.log('data should be', data);
+                dispatch(setIP(data));
+                _context4.next = 12;
+                break;
+
+              case 9:
+                _context4.prev = 9;
+                _context4.t0 = _context4["catch"](0);
+                console.log(_context4.t0);
+
+              case 12:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this, [[0, 9]]);
+      }));
+
+      return function (_x4) {
+        return _ref4.apply(this, arguments);
+      };
+    }()
+  );
+};
 /**
  * REDUCER
  */
 
 
-exports.logout = logout;
+exports.grab = grab;
 
 function _default() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultUser;

@@ -1116,7 +1116,9 @@ function _default() {
       });
 
     case SET_IP:
-      return action.ip;
+      return _objectSpread({}, state, {
+        ip: action.ip
+      });
 
     default:
       return state;

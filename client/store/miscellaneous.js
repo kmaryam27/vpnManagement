@@ -23,8 +23,8 @@ const setIp = ip => {
 
 export const grabIp = () => async dispatch => {
   try {
-    console.log('data should be');
-    const data = await axios.get('/api/users/ip');
+    const { data } = await axios.get('/api/users/ip');
+    console.log('data should be', data);
     dispatch(setIp(data.data || 1));
   } catch (err) {
     console.error(err);

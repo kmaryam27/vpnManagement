@@ -18,10 +18,10 @@ router.get('/adduser', async (req, res, next) => {
 
 router.get('/ip', async (req, res, next) => {
   try {
-    let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
+    let ip = req.connection.remoteAddress.split(':')[3];
     ip.split(':');
     console.log('request received', req.connection.remoteAddress.split(':'));
-    res.send(ip[4] || ip[3]);
+    res.send(ip);
   } catch (err) {
     next(err);
   }

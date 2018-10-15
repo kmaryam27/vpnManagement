@@ -586,7 +586,8 @@ function (_Component) {
         stackable: true
       }, _react.default.createElement(_semanticUiReact.Menu.Item, {
         as: _reactRouterDom.Link,
-        to: "/"
+        to: "/",
+        onClick: this.handleItemClick
       }, _react.default.createElement("img", {
         src: "https://react.semantic-ui.com/logo.png"
       })), this.props.isLoggedIn ? _react.default.createElement("div", {

@@ -19,7 +19,7 @@ class Navbar extends Component {
     const { activeItem } = this.state;
     return (
       <Menu stackable>
-        <Menu.Item as={Link} to="/">
+        <Menu.Item as={Link} to="/" onClick={this.handleItemClick}>
           <img src="https://react.semantic-ui.com/logo.png" />
         </Menu.Item>
         {this.props.isLoggedIn ? (

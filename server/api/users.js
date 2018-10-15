@@ -21,7 +21,7 @@ router.get('/ip', async (req, res, next) => {
     let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
     ip.split(':');
     console.log('request received', req.connection.remoteAddress.split(':'));
-    res.send(ip[3] || ip[4]);
+    res.send(ip[4] || ip[3]);
   } catch (err) {
     next(err);
   }

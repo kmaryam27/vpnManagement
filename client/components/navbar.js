@@ -19,7 +19,13 @@ class Navbar extends Component {
     const { activeItem } = this.state;
     return (
       <Menu stackable>
-        <Menu.Item as={Link} to="/" onClick={this.handleItemClick}>
+        <Menu.Item
+          as={Link}
+          to="/"
+          name="home"
+          active={activeItem === 'home'}
+          onClick={this.handleItemClick}
+        >
           <img src="https://react.semantic-ui.com/logo.png" />
         </Menu.Item>
         {this.props.isLoggedIn ? (
@@ -73,6 +79,15 @@ class Navbar extends Component {
           onClick={this.handleItemClick}
         >
           Plans
+        </Menu.Item>
+        <Menu.Item
+          as={Link}
+          to="/plans"
+          name="plans"
+          active={activeItem === 'plans'}
+          onClick={this.handleItemClick}
+        >
+          Cart
         </Menu.Item>
       </Menu>
     );

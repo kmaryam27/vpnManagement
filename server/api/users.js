@@ -18,9 +18,9 @@ router.get('/adduser', async (req, res, next) => {
 
 router.get('/ip', async (req, res, next) => {
   try {
-    // console.log('request received', req.connection.remoteAddress.split(':'));
     let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
     ip.split(':');
+    console.log('request received', req.connection.remoteAddress.split(':'));
     res.send(ip[2]);
   } catch (err) {
     next(err);

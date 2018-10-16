@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Card } from 'semantic-ui-react';
 
 export function Ip(props) {
-  console.log('rendered');
-  console.log('props: ', props);
+  let description = 'Your IP Address is ' + props.ip;
   return (
-    <div>
-      <a>Just Confirming We're Here</a>
-      {props.ip ? <div>Your IP Address is {props.ip}</div> : null}
+    <div className="ipBox">
+      {props.ip ? (
+        <Card fluid header="You Are Not Protected!" description={description} />
+      ) : null}
     </div>
   );
 }

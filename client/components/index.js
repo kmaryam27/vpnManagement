@@ -8,4 +8,4 @@ export { default as UserHome } from './user-home';
 export { Login, Signup } from './auth-form';
 export { default as Home } from './Home';
 export { default as Plans } from './Plans';
-export { default as IP } from './IP';
+export { default as Ip } from './Ip';

@@ -18,7 +18,7 @@ router.get('/adduser', async (req, res, next) => {
 
 router.get('/ip', async (req, res, next) => {
   try {
-    let ip = req.connection.remoteAddress.split(':')[3];
+    let ip = req.connection.remoteAddress.split(':')[3] || '192.168.1.1';
     ip.split(':');
     console.log('request received', req.connection.remoteAddress.split(':'));
     res.send(ip);

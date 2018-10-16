@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
-import { IP } from './IP';
+import Ip from './Ip';
 import { connect } from 'react-redux';
 
-export function Home(props) {
+export default function Home(props) {
   return (
     <div>
       <h1>Hello and Welcome to the Home Component!</h1>
-      {/* <IP /> */}
+      <Ip />
     </div>
   );
 }
 
-const mapDispatch = state => {
-  return {
-    // getIP: state.miscellaneous.grabIP,
-  };
-};
+// const mapState = state => {
+//   console.log('home state is', state);
+//   return {
+//     ip: state.miscellaneous.ip,
+//   };
+// };
+// const mapDispatch = state => {
+//   return {
+//     // getIP: state.miscellaneous.grabIP,
+//   };
+// };
 
-export default connect(null, mapDispatch)(Home);
+// export default connect(mapState, mapDispatch)(Home);

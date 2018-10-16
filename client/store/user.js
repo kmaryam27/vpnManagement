@@ -56,15 +56,15 @@ export const logout = () => async dispatch => {
   }
 };
 
-export const grab = () => async dispatch => {
-  try {
-    const { data } = await axios.get('/api/users/ip');
-    console.log('data should be', data);
-    dispatch(setIP(data));
-  } catch (err) {
-    console.log(err);
-  }
-};
+// export const grab = () => async dispatch => {
+//   try {
+//     const { data } = await axios.get('/api/users/ip');
+//     console.log('data should be', data);
+//     dispatch(setIP(data));
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 /**
  * REDUCER

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const defaultState = { loading: false };
+const defaultState = { ip: 0, loading: false };
 
 // Action Types
 const GET_IP = 'GET_IP';
@@ -25,7 +25,7 @@ export const grabIp = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/users/ip');
     console.log('data should be', data);
-    dispatch(setIp(data.data || 1));
+    dispatch(setIp(data || 1));
   } catch (err) {
     console.error(err);
   }
@@ -43,7 +43,7 @@ export default function(state = defaultState, action) {
     case GET_IP:
       return { ...state, loading: true };
     case SET_IP:
-      return { ...state, ip: action.ip };
+      return { ip: action.ip, loading: false };
     default:
       return state;
   }

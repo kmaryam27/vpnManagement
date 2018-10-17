@@ -9,3 +9,4 @@ export { Login, Signup } from './auth-form';
 export { default as Home } from './Home';
 export { default as Plans } from './Plans';
 export { default as Ip } from './Ip';
+export { default as Registration } from './Registration';

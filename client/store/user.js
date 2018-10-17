@@ -6,6 +6,7 @@ import history from '../history';
  */
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
+const ADD_USER = 'ADD_USER';
 
 /**
  * INITIAL STATE
@@ -16,6 +17,7 @@ const defaultUser = {};
  * ACTION CREATORS
  */
 const getUser = user => ({ type: GET_USER, user });
+const addUser = user => ({ type: ADD_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
 
 /**
@@ -43,6 +45,22 @@ export const auth = (email, password, method) => async dispatch => {
     history.push('/home');
   } catch (dispatchOrHistoryErr) {
     console.error(dispatchOrHistoryErr);
+  }
+};
+
+export const register = user => async dispatch => {
+  let response;
+  try {
+    response = await axios.post('/api/users/signup', user);
+  } catch (err) {
+    return dispatch(getUser({ error: { email: true } }));
+  }
+
+  try {
+    dispatch(addUser(response.data));
+    history.push('/home');
+  } catch (err) {
+    console.error(err);
   }
 };
 
@@ -75,6 +93,8 @@ export default function(state = defaultUser, action) {
       return action.user;
     case REMOVE_USER:
       return defaultUser;
+    case ADD_USER:
+      return action.user;
     default:
       return state;
   }

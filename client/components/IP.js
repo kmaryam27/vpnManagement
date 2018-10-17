@@ -14,7 +14,6 @@ export function Ip(props) {
 }
 
 const mapState = state => {
-  console.log('ip state is', state);
   return {
     ip: state.miscellaneous.ip,
   };

@@ -10,7 +10,6 @@ const SET_IP = 'SET_IP';
 const getIP = () => ({ type: 'GET_IP', loading: true });
 
 const setIp = ip => {
-  console.log('inside setIP');
   return {
     type: SET_IP,
     ip,
@@ -24,7 +23,6 @@ const setIp = ip => {
 export const grabIp = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/users/ip');
-    console.log('data should be', data);
     dispatch(setIp(data || 1));
   } catch (err) {
     console.error(err);

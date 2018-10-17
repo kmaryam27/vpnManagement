@@ -11,7 +11,9 @@ const ADD_USER = 'ADD_USER';
 /**
  * INITIAL STATE
  */
-const defaultUser = {};
+const defaultUser = {
+  error: '',
+};
 
 /**
  * ACTION CREATORS
@@ -50,6 +52,11 @@ export const auth = (email, password, method) => async dispatch => {
 
 export const register = user => async dispatch => {
   let response;
+  console.log('user password', user.password.length < 8);
+  if (user.password.length < 8) {
+    return dispatch(getUser({ error: { password: true } }));
+  }
+
   try {
     response = await axios.post('/api/users/signup', user);
   } catch (err) {

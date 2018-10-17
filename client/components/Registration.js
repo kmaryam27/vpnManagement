@@ -20,7 +20,7 @@ export function Registration(props) {
       <Form.Field>
         <label>Email Address</label>
         <input name="email" placeholder="Email Address" />
-        {props.error && props.error.email !== undefined ? (
+        {props.error.email !== undefined ? (
           <Message
             error
             header="Email Already Registered"
@@ -31,6 +31,13 @@ export function Registration(props) {
       <Form.Field>
         <label>Password</label>
         <input name="password" placeholder="Password" type="password" />
+        {props.error.password !== undefined ? (
+          <Message
+            error
+            header="Password does not meat requirements"
+            content="Password should be at least 8 characters long"
+          />
+        ) : null}
       </Form.Field>
       <Button type="submit">Register</Button>
     </Form>

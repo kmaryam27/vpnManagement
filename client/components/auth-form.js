@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { auth } from '../store';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Message } from 'semantic-ui-react';
 
 /**
  * COMPONENT
@@ -11,38 +11,26 @@ const AuthForm = props => {
   const { name, displayName, handleSubmit, error } = props;
 
   return (
-    <Form className="login" onSubmit={handleSubmit} name={name}>
-      <Form.Field>
-        <label>Email</label>
-        <Form.Input name="email" placeholder="Email Address" />
-      </Form.Field>
-      <Form.Field>
-        <label>Password</label>
-        <Form.Input name="password" placeholder="Password" type="password" />
-      </Form.Field>
-      <Button type="submit">Login</Button>
-    </Form>
-
-    // <div>
-    //   <form onSubmit={handleSubmit} name={name}>
-    //     <div>
-    //       <label htmlFor="email">
-    //         <small>Email</small>
-    //       </label>
-    //       <input name="email" type="text" />
-    //     </div>
-    //     <div>
-    //       <label htmlFor="password">
-    //         <small>Password</small>
-    //       </label>
-    //       <input name="password" type="password" />
-    //     </div>
-    //     <div>
-    //       <button type="submit">{displayName}</button>
-    //     </div>
-    //     {error && error.response && <div> {error.response.data} </div>}
-    //   </form>
-    // </div>
+    <div>
+      <Form className="login" onSubmit={handleSubmit} name={name}>
+        <Form.Field>
+          <label>Email</label>
+          <Form.Input name="email" placeholder="Email Address" />
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
+          <input name="password" placeholder="Password" type="password" />
+        </Form.Field>
+        <Button type="submit">Login</Button>
+      </Form>
+      {props.error && props.error.response ? (
+        <Message
+          error
+          header="There was an error!"
+          content={error.response.data}
+        />
+      ) : null}
+    </div>
   );
 };
 
@@ -54,6 +42,7 @@ const AuthForm = props => {
  *   can stay DRY with interfaces that are very similar to each other!
  */
 const mapLogin = state => {
+  state.user.error ? console.log('state is', state.user.error) : null;
   return {
     name: 'login',
     displayName: 'Login',

@@ -9,6 +9,7 @@ import {
   Home,
   Plans,
   Registration,
+  Admin,
 } from './components';
 import { me, grabIp, grab, me2 } from './store';
 
@@ -23,7 +24,7 @@ class Routes extends Component {
   }
 
   render() {
-    const { isLoggedIn } = this.props;
+    const { isLoggedIn, isAdmin } = this.props;
 
     return (
       <Switch>
@@ -35,6 +36,11 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+          </Switch>
+        )}
+        {isAdmin && (
+          <Switch>
+            <Route path="/admin" component={Admin} />
           </Switch>
         )}
         {/* Displays our Login component as a fallback */}
@@ -52,6 +58,7 @@ const mapState = state => {
     // Being 'logged in' for our purposes will be defined has having a state.user that has a truthy id.
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin,
   };
 };
 
@@ -59,7 +66,7 @@ const mapDispatch = dispatch => {
   return {
     loadInitialData() {
       dispatch(grabIp());
-      // dispatch(me());
+      dispatch(me());
     },
   };
 };

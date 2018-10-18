@@ -13,6 +13,7 @@ const ADD_USER = 'ADD_USER';
  */
 const defaultUser = {
   error: '',
+  isAdmin: false,
 };
 
 /**
@@ -39,6 +40,7 @@ export const auth = (email, password, method) => async dispatch => {
   try {
     res = await axios.post(`/auth/${method}`, { email, password });
   } catch (authError) {
+    console.log('auth error', authError.toString());
     return dispatch(getUser({ error: authError }));
   }
 

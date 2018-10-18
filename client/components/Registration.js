@@ -34,7 +34,7 @@ export function Registration(props) {
         {props.error.password !== undefined ? (
           <Message
             error
-            header="Password does not meat requirements"
+            header="Password does not meet requirements"
             content="Password should be at least 8 characters long"
           />
         ) : null}

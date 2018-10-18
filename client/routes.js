@@ -18,9 +18,7 @@ import { me, grabIp, grab, me2 } from './store';
  */
 class Routes extends Component {
   componentDidMount() {
-    setTimeout(() => {
-      this.props.loadInitialData();
-    }, 3000);
+    this.props.loadInitialData();
   }
 
   render() {

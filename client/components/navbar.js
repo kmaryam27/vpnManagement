@@ -29,7 +29,7 @@ class Navbar extends Component {
           <img src="https://react.semantic-ui.com/logo.png" />
         </Menu.Item>
         {this.props.isLoggedIn ? (
-          <div className="navBar">
+          <div>
             <Menu.Item
               as={Link}
               to="/home"

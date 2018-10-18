@@ -92,11 +92,9 @@ class Navbar extends Component {
             <Menu.Item
               name="logout"
               active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
+              onClick={this.props.handleClick}
             >
-              <a href="#" onClick={this.props.handleClick}>
-                Logout
-              </a>
+              Logout
             </Menu.Item>
           </>
         ) : (

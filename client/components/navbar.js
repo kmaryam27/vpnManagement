@@ -48,6 +48,37 @@ class Navbar extends Component {
                 Logout
               </a>
             </Menu.Item>
+            {this.props.isAdmin ? (
+              <div>
+                <Menu.Item
+                  as={Link}
+                  to="/messages"
+                  name="messages"
+                  active={activeItem === 'mesages'}
+                  onClick={this.handleItemClick}
+                >
+                  Messages
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to="/usermanagement"
+                  name="usermanagement"
+                  active={activeItem === 'usermanagement'}
+                  onClick={this.handleItemClick}
+                >
+                  Manage Users
+                </Menu.Item>
+                <Menu.Item
+                  as={Link}
+                  to="/servermanagement"
+                  name="servermanagement"
+                  active={activeItem === 'servermanagement'}
+                  onClick={this.handleItemClick}
+                >
+                  Manage Servers
+                </Menu.Item>
+              </div>
+            ) : null}
           </div>
         ) : (
           <div className="navBar">
@@ -126,6 +157,7 @@ class Navbar extends Component {
 const mapState = state => {
   return {
     isLoggedIn: !!state.user.id,
+    isAdmin: state.user.isAdmin,
   };
 };
 

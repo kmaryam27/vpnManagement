@@ -11,7 +11,7 @@ import {
   Registration,
   Admin,
 } from './components';
-import { me, grabIp, grab, me2 } from './store';
+import { me, grabIp, loadAdmin } from './store';
 
 /**
  * COMPONENT
@@ -19,6 +19,10 @@ import { me, grabIp, grab, me2 } from './store';
 class Routes extends Component {
   componentDidMount() {
     this.props.loadInitialData();
+  }
+
+  componentDidUpdate() {
+    this.props.isAdmin ? this.props.loadInitialAdmin() : null;
   }
 
   render() {
@@ -65,6 +69,9 @@ const mapDispatch = dispatch => {
     loadInitialData() {
       dispatch(grabIp());
       dispatch(me());
+    },
+    loadInitialAdmin() {
+      dispatch(loadAdmin());
     },
   };
 };

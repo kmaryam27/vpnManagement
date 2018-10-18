@@ -25,6 +25,7 @@
 .navBar {
   display: flex;
 }
+
 .planTable {
   display: flex;
   margin-left: auto;

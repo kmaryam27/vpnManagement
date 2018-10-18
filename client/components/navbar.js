@@ -28,80 +28,38 @@ class Navbar extends Component {
         >
           <img src="https://react.semantic-ui.com/logo.png" />
         </Menu.Item>
-        {this.props.isLoggedIn ? (
-          <div>
+
+        {this.props.isAdmin ? (
+          <>
             <Menu.Item
               as={Link}
-              to="/home"
-              name="home"
-              active={activeItem === 'home'}
+              to="/messages"
+              name="messages"
+              active={activeItem === 'mesages'}
               onClick={this.handleItemClick}
             >
-              Home
-            </Menu.Item>
-            <Menu.Item
-              name="logout"
-              active={activeItem === 'logout'}
-              onClick={this.handleItemClick}
-            >
-              <a href="#" onClick={this.props.handleClick}>
-                Logout
-              </a>
-            </Menu.Item>
-            {this.props.isAdmin ? (
-              <div>
-                <Menu.Item
-                  as={Link}
-                  to="/messages"
-                  name="messages"
-                  active={activeItem === 'mesages'}
-                  onClick={this.handleItemClick}
-                >
-                  Messages
-                </Menu.Item>
-                <Menu.Item
-                  as={Link}
-                  to="/usermanagement"
-                  name="usermanagement"
-                  active={activeItem === 'usermanagement'}
-                  onClick={this.handleItemClick}
-                >
-                  Manage Users
-                </Menu.Item>
-                <Menu.Item
-                  as={Link}
-                  to="/servermanagement"
-                  name="servermanagement"
-                  active={activeItem === 'servermanagement'}
-                  onClick={this.handleItemClick}
-                >
-                  Manage Servers
-                </Menu.Item>
-              </div>
-            ) : null}
-          </div>
-        ) : (
-          <div className="navBar">
-            <Menu.Item
-              as={Link}
-              to="/login"
-              name="login"
-              active={activeItem === 'login'}
-              onClick={this.handleItemClick}
-            >
-              Login
+              Messages
             </Menu.Item>
             <Menu.Item
               as={Link}
-              to="/signup"
-              name="sign up"
-              active={activeItem === 'sign up'}
+              to="/usermanagement"
+              name="usermanagement"
+              active={activeItem === 'usermanagement'}
               onClick={this.handleItemClick}
             >
-              Sign Up
+              Manage Users
             </Menu.Item>
-          </div>
-        )}
+            <Menu.Item
+              as={Link}
+              to="/servermanagement"
+              name="servermanagement"
+              active={activeItem === 'servermanagement'}
+              onClick={this.handleItemClick}
+            >
+              Manage Servers
+            </Menu.Item>
+          </>
+        ) : null}
         <Menu.Item
           as={Link}
           to="/plans"
@@ -120,6 +78,49 @@ class Navbar extends Component {
         >
           Cart
         </Menu.Item>
+        {this.props.isLoggedIn ? (
+          <>
+            <Menu.Item
+              as={Link}
+              to="/home"
+              name="home"
+              active={activeItem === 'home'}
+              onClick={this.handleItemClick}
+            >
+              Home
+            </Menu.Item>
+            <Menu.Item
+              name="logout"
+              active={activeItem === 'logout'}
+              onClick={this.handleItemClick}
+            >
+              <a href="#" onClick={this.props.handleClick}>
+                Logout
+              </a>
+            </Menu.Item>
+          </>
+        ) : (
+          <>
+            <Menu.Item
+              as={Link}
+              to="/login"
+              name="login"
+              active={activeItem === 'login'}
+              onClick={this.handleItemClick}
+            >
+              Login
+            </Menu.Item>
+            <Menu.Item
+              as={Link}
+              to="/signup"
+              name="sign up"
+              active={activeItem === 'sign up'}
+              onClick={this.handleItemClick}
+            >
+              Sign Up
+            </Menu.Item>
+          </>
+        )}
       </Menu>
     );
   }

@@ -23,6 +23,7 @@ class Routes extends Component {
 
   render() {
     const { isLoggedIn, isAdmin } = this.props;
+    console.log('props are', isLoggedIn, isAdmin);
 
     return (
       <Switch>
@@ -34,14 +35,13 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            {isAdmin && (
+              <Switch>
+                <Route path="/admin" component={Admin} />
+              </Switch>
+            )}
           </Switch>
         )}
-        {isAdmin && (
-          <Switch>
-            <Route path="/admin" component={Admin} />
-          </Switch>
-        )}
-        {/* Displays our Login component as a fallback */}
         <Route component={Home} />
       </Switch>
     );

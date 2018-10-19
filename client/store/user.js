@@ -7,6 +7,7 @@ import history from '../history';
 const GET_USER = 'GET_USER';
 const REMOVE_USER = 'REMOVE_USER';
 const ADD_USER = 'ADD_USER';
+const UPDATE_USER = 'UPDATE_USER';
 
 /**
  * INITIAL STATE
@@ -22,10 +23,20 @@ const defaultUser = {
 const getUser = user => ({ type: GET_USER, user });
 const addUser = user => ({ type: ADD_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
+const updateUser = user => ({ type: UPDATE_USER, user });
 
 /**
  * THUNK CREATORS
  */
+
+export const update = user => async dispatch => {
+  try {
+    let { data } = await axios.post(`/api/users/update/`, user);
+    console.log('data should be', data);
+  } catch (err) {
+    console.error(err);
+  }
+};
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me');
@@ -54,7 +65,6 @@ export const auth = (email, password, method) => async dispatch => {
 
 export const register = user => async dispatch => {
   let response;
-  console.log('user password', user.password.length < 8);
   if (user.password.length < 8) {
     return dispatch(getUser({ error: { password: true } }));
   }

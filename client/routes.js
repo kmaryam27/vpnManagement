@@ -10,6 +10,7 @@ import {
   Plans,
   Registration,
   Admin,
+  Profile,
 } from './components';
 import { me, grabIp, loadAdmin } from './store';
 
@@ -39,6 +40,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route path="/home" component={UserHome} />
+            <Route path="/profile" component={Profile} />
             {isAdmin && (
               <Switch>
                 <Route path="/admin" component={Admin} />

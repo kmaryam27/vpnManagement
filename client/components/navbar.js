@@ -21,7 +21,7 @@ class Navbar extends Component {
       <Menu stackable>
         <Menu.Item
           as={Link}
-          to="/"
+          to="/home"
           name="home"
           active={activeItem === 'home'}
           onClick={this.handleItemClick}
@@ -82,12 +82,12 @@ class Navbar extends Component {
           <>
             <Menu.Item
               as={Link}
-              to="/home"
-              name="home"
-              active={activeItem === 'home'}
+              to="/profile"
+              name="profile"
+              active={activeItem === 'profile'}
               onClick={this.handleItemClick}
             >
-              Home
+              Edit Profile
             </Menu.Item>
             <Menu.Item
               name="logout"
@@ -123,32 +123,6 @@ class Navbar extends Component {
     );
   }
 }
-
-//   <div>
-//     <a href="/home">
-//       <h1>CryptoBanker's VPN Management Suite</h1>
-//     </a>
-//     <nav>
-//       {isLoggedIn ? (
-//         <div>
-//           {/* The navbar will show these links after you log in */}
-//           <Link to="/home">Home</Link>
-//           <a href="#" onClick={handleClick}>
-//             Logout
-//           </a>
-//         </div>
-//       ) : (
-//         <div>
-//           {/* The navbar will show these links before you log in */}
-//           <Link to="/login">Login</Link>
-//           <Link to="/signup">Sign Up</Link>
-//         </div>
-//       )}
-//       <Link to="/plans">Plans</Link>
-//     </nav>
-//     <hr />
-//   </div>
-// );
 
 /**
  * CONTAINER

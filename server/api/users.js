@@ -16,8 +16,37 @@ router.get('/adduser', async (req, res, next) => {
   }
 });
 
+router.post('/update', async (req, res, next) => {
+  console.log('request received', req.body);
+  try {
+    const user = await User.findOne({ where: { email: req.body.email } });
+    if (!user) {
+      res.status(401).send('no user found');
+    } else {
+      console.log('user found', user);
+      if (user.correctPassword(req.body.currentPassword)) {
+        let body = req.body;
+        await user.update(
+          {
+            ...user,
+            password: body.newPassword,
+            firstName: body.firstName || user.firstName,
+            lastName: body.lastName || user.lastName,
+            email: body.email || user.email,
+          }
+          // { where: { email: req.body.email } }
+        );
+        res.status(201).send('Update successful!');
+      } else {
+        res.status(401).send('Wrong password');
+      }
+    }
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post('/signup', async (req, res, next) => {
-  console.log('received registration req', req.body.password);
   let users;
   try {
     users = await User.findOrCreate({

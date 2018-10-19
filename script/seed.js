@@ -1,13 +1,28 @@
 'use strict';
 
 const db = require('../server/db');
-const { User } = require('../server/db/models');
+const { User, Plan } = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
   console.log('db synced!');
 
   const users = await Promise.all([
+    Plan.create({
+      name: 'weekly',
+      length: 7,
+      price: 1.0,
+    }),
+    Plan.create({
+      name: 'monthly',
+      length: '30',
+      price: 1.99,
+    }),
+    Plan.create({
+      name: 'yearly',
+      length: 365,
+      price: 19.99,
+    }),
     User.create({
       email: 'cody@email.com',
       password: '123',

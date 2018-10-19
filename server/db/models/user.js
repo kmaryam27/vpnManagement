@@ -37,6 +37,39 @@ const User = db.define('user', {
     allowNull: false,
     defaultValue: false,
   },
+  // plan: {
+  //   type: Sequelize.STRING,
+  //   allowNull: true,
+  //   defaultValue: null,
+  // },
+  planEnd: {
+    type: Sequelize.DATE,
+    allowNull: true,
+    defaultValue: null,
+  },
+  paymentTx: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    allowNull: false,
+    defaultValue: [],
+  },
+  paymentAddress: {
+    type: Sequelize.STRING,
+    allowNull: true,
+    defaultValue: null,
+  },
+  paymentDate: {
+    type: Sequelize.ARRAY(Sequelize.DATE),
+    allownUll: false,
+    defaultValue: [],
+  },
+  autoRenew: {
+    type: Sequelize.BOOLEAN,
+    allowNull: true,
+  },
+  vpnId: {
+    type: Sequelize.INTEGER,
+    allowNull: true,
+  },
 });
 
 module.exports = User;
@@ -67,6 +100,7 @@ User.encryptPassword = function(plainText, salt) {
  * hooks
  */
 const setSaltAndPassword = user => {
+  console.log('I see user', user);
   if (user.changed('password')) {
     user.salt = User.generateSalt();
     user.password = User.encryptPassword(user.password(), user.salt());

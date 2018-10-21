@@ -43,7 +43,7 @@ const User = db.define('user', {
   //   defaultValue: null,
   // },
   planEnd: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: true,
     defaultValue: null,
   },
@@ -58,7 +58,7 @@ const User = db.define('user', {
     defaultValue: null,
   },
   paymentDate: {
-    type: Sequelize.ARRAY(Sequelize.DATE),
+    type: Sequelize.ARRAY(Sequelize.DATEONLY),
     allownUll: false,
     defaultValue: [],
   },

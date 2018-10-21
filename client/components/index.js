@@ -12,3 +12,4 @@ export { default as Ip } from './Ip';
 export { default as Registration } from './Registration';
 export { default as Admin } from './Admin';
 export { default as Profile } from './Profile';
+export { default as UserManagement } from './UserManagement';

@@ -18,9 +18,9 @@ export default function Home(props) {
 //   };
 // };
 // const mapDispatch = state => {
-//   return {
-//     // getIP: state.miscellaneous.grabIP,
-//   };
+// return {
+// getIP: state.miscellaneous.grabIP,
+// };
 // };
 
 // export default connect(mapState, mapDispatch)(Home);

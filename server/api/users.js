@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { User, Plan } = require('../db/models');
 module.exports = router;
 
 router.get('/adduser', async (req, res, next) => {
@@ -31,7 +31,11 @@ router.get('/all', async (req, res, next) => {
         'planEnd',
         'autoRenew',
         'vpnId',
+        'planId',
       ],
+      // include: {
+      //   model: Plan,
+      // },
     });
     res.send(users);
   } catch (err) {

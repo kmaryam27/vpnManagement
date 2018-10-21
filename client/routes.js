@@ -11,6 +11,7 @@ import {
   Registration,
   Admin,
   Profile,
+  UserManagement,
 } from './components';
 import { me, grabIp, loadAdmin } from './store';
 
@@ -22,9 +23,9 @@ class Routes extends Component {
     this.props.loadInitialData();
   }
 
-  componentDidUpdate() {
-    this.props.isAdmin ? this.props.loadInitialAdmin() : null;
-  }
+  // componentDidUpdate() {
+  //   this.props.isAdmin ? this.props.loadInitialAdmin() : null;
+  // }
 
   render() {
     const { isLoggedIn, isAdmin } = this.props;
@@ -44,6 +45,7 @@ class Routes extends Component {
             {isAdmin && (
               <Switch>
                 <Route path="/admin" component={Admin} />
+                <Route path="/users" component={UserManagement} />
               </Switch>
             )}
           </Switch>
@@ -71,8 +73,6 @@ const mapDispatch = dispatch => {
     loadInitialData() {
       dispatch(grabIp());
       dispatch(me());
-    },
-    loadInitialAdmin() {
       dispatch(loadAdmin());
     },
   };

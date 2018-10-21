@@ -23,7 +23,7 @@ const defaultUser = {
 const getUser = user => ({ type: GET_USER, user });
 const addUser = user => ({ type: ADD_USER, user });
 const removeUser = () => ({ type: REMOVE_USER });
-const updateUser = user => ({ type: UPDATE_USER, user });
+const updateUser = status => ({ type: UPDATE_USER, status });
 
 /**
  * THUNK CREATORS
@@ -32,9 +32,9 @@ const updateUser = user => ({ type: UPDATE_USER, user });
 export const update = user => async dispatch => {
   try {
     let { data } = await axios.post(`/api/users/update/`, user);
-    console.log('data should be', data);
+    dispatch(updateUser(true));
   } catch (err) {
-    console.error(err);
+    dispatch(updateUser({ error: err }));
   }
 };
 export const me = () => async dispatch => {

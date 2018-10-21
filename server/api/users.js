@@ -16,6 +16,29 @@ router.get('/adduser', async (req, res, next) => {
   }
 });
 
+router.get('/all', async (req, res, next) => {
+  console.log('session is', req.session);
+  try {
+    const users = await User.findAll({
+      where: {
+        isAdmin: false,
+      },
+      attributes: [
+        'id',
+        'email',
+        'firstName',
+        'lastName',
+        'planEnd',
+        'autoRenew',
+        'vpnId',
+      ],
+    });
+    res.send(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post('/update', async (req, res, next) => {
   console.log('request received', req.body);
   try {

@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 /**
  * Default State
  */
@@ -29,7 +31,9 @@ const loadData = data => {
 
 export const loadAdmin = () => async dispatch => {
   try {
-    dispatch(loadData('hello!'));
+    const { data } = await axios.get('/api/users/all');
+    console.log('data should be', data);
+    dispatch(loadData(data));
   } catch (err) {
     console.error(err);
   }

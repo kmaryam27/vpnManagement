@@ -26,16 +26,13 @@ router.post('/update', async (req, res, next) => {
       console.log('user found', user);
       if (user.correctPassword(req.body.currentPassword)) {
         let body = req.body;
-        await user.update(
-          {
-            ...user,
-            password: body.newPassword,
-            firstName: body.firstName || user.firstName,
-            lastName: body.lastName || user.lastName,
-            email: body.email || user.email,
-          }
-          // { where: { email: req.body.email } }
-        );
+        await user.update({
+          ...user,
+          password: body.newPassword,
+          firstName: body.firstName || user.firstName,
+          lastName: body.lastName || user.lastName,
+          email: body.email || user.email,
+        });
         res.status(201).send('Update successful!');
       } else {
         res.status(401).send('Wrong password');

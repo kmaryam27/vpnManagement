@@ -37,13 +37,8 @@ const User = db.define('user', {
     allowNull: false,
     defaultValue: false,
   },
-  // plan: {
-  //   type: Sequelize.STRING,
-  //   allowNull: true,
-  //   defaultValue: null,
-  // },
   planEnd: {
-    type: Sequelize.DATE,
+    type: Sequelize.DATEONLY,
     allowNull: true,
     defaultValue: null,
   },
@@ -58,13 +53,23 @@ const User = db.define('user', {
     defaultValue: null,
   },
   paymentDate: {
-    type: Sequelize.ARRAY(Sequelize.DATE),
+    type: Sequelize.ARRAY(Sequelize.DATEONLY),
     allownUll: false,
     defaultValue: [],
   },
   autoRenew: {
     type: Sequelize.BOOLEAN,
     allowNull: true,
+    get() {
+      let value;
+      if (this.getDataValue('autoRenew') !== null) {
+        value = this.getDataValue('autoRenew');
+        value = value.toString();
+        return value;
+      } else {
+        return null;
+      }
+    },
   },
   vpnId: {
     type: Sequelize.INTEGER,

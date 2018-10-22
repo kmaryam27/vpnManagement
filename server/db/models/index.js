@@ -15,7 +15,18 @@ const Plan = require('./plan');
  * instead of: const User = require('../db/models/user')
  */
 
-Plan.belongsToMany(User, { through: 'Plan' });
+// Plan.belongsToMany(User, { through: 'Plan' });
+// User.belongsTo(Plan);
+Plan.hasOne(User);
+
+// const model = User;
+// for (let assoc of Object.keys(model.associations)) {
+//   for (let accessor of Object.keys(model.associations[assoc].accessors)) {
+//     console.log(
+//       model.name + '.' + model.associations[assoc].accessors[accessor] + '()'
+//     );
+//   }
+// }
 
 module.exports = {
   User,

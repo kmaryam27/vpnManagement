@@ -42,9 +42,18 @@ class Navbar extends Component {
             </Menu.Item>
             <Menu.Item
               as={Link}
-              to="/usermanagement"
-              name="usermanagement"
-              active={activeItem === 'usermanagement'}
+              to="/admin"
+              name="admin"
+              active={activeItem === 'admin'}
+              onClick={this.handleItemClick}
+            >
+              Administration
+            </Menu.Item>
+            <Menu.Item
+              as={Link}
+              to="/users"
+              name="users"
+              active={activeItem === 'users'}
               onClick={this.handleItemClick}
             >
               Manage Users

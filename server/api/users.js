@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../db/models');
+const { User, Plan } = require('../db/models');
 module.exports = router;
 
 router.get('/adduser', async (req, res, next) => {
@@ -11,6 +11,34 @@ router.get('/adduser', async (req, res, next) => {
       attributes: ['id', 'email'],
     });
     res.json(users);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get('/all', async (req, res, next) => {
+  console.log('session is', req.session);
+  try {
+    const users = await User.findAll({
+      where: {
+        isAdmin: false,
+      },
+      attributes: [
+        'id',
+        'email',
+        'firstName',
+        'lastName',
+        'planEnd',
+        'autoRenew',
+        'vpnId',
+        'planId',
+      ],
+      // include: {
+      //   model: Plan,
+      // },
+    });
+    // console.log('users are', users);
+    res.send(users);
   } catch (err) {
     next(err);
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
 import ReactTable from 'react-table';
+import Profile from './Profile';
 
 export default class ServerTable extends Component {
   constructor() {
@@ -41,6 +42,9 @@ export default class ServerTable extends Component {
             ]}
             defaultSorted={[{ id: 'id', asc: true }]}
             defaultPageSize={10}
+            SubComponent={row => {
+              return <Profile row={row} />;
+            }}
           />
         ) : null}
       </div>

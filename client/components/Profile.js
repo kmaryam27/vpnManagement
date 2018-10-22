@@ -20,13 +20,13 @@ export function Profile(props) {
         <Form.Field>
           <label>Email Address</label>
           <input name="email" placeholder={props.user.email} />
-          {/* {props.error.email !== undefined ? (
+          {props.error && props.error.email !== undefined ? (
             <Message
               error
               header="Email Already Registered"
               content="Please Try Another Email"
             />
-          ) : null} */}
+          ) : null}
         </Form.Field>
         <Form.Field>
           <label>New Password</label>
@@ -35,13 +35,13 @@ export function Profile(props) {
         <Form.Field>
           <label>Current Password</label>
           <input name="currentPassword" type="password" />
-          {/* {props.error.password !== undefined ? (
+          {props.error && props.error.password !== undefined ? (
             <Message
               error
               header="Password does not meet requirements"
               content="Password should be at least 8 characters long"
             />
-          ) : null} */}
+          ) : null}
         </Form.Field>
         <Button type="submit">Update Profile</Button>
       </Form>
@@ -81,3 +81,27 @@ const mapDispatch = dispatch => {
 };
 
 export default connect(mapState, mapDispatch)(Profile);
+
+{
+  /* <Form.Group widths="equal">
+<Form.Field>
+  <label>First Name</label>
+  <input name="firstName" placeholder={props.row.original.port} />
+</Form.Field>
+<Form.Field>
+  <label>Last Name</label>
+  <input name="lastName" placeholder={'props.user.lastName'} />
+</Form.Field>
+</Form.Group>
+<Form.Field>
+<label>Email Address</label>
+<input name="email" placeholder={'props.user.email'} />
+{props.error && props.error.email !== undefined ? (
+  <Message
+    error
+    header="Email Already Registered"
+    content="Please Try Another Email"
+  />
+) : null}
+</Form.Field> */
+}

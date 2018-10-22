@@ -37,6 +37,7 @@ router.get('/all', async (req, res, next) => {
       //   model: Plan,
       // },
     });
+    // console.log('users are', users);
     res.send(users);
   } catch (err) {
     next(err);

@@ -37,11 +37,6 @@ const User = db.define('user', {
     allowNull: false,
     defaultValue: false,
   },
-  // plan: {
-  //   type: Sequelize.STRING,
-  //   allowNull: true,
-  //   defaultValue: null,
-  // },
   planEnd: {
     type: Sequelize.DATEONLY,
     allowNull: true,
@@ -65,6 +60,16 @@ const User = db.define('user', {
   autoRenew: {
     type: Sequelize.BOOLEAN,
     allowNull: true,
+    get() {
+      let value;
+      if (this.getDataValue('autoRenew') !== null) {
+        value = this.getDataValue('autoRenew');
+        value = value.toString();
+        return value;
+      } else {
+        return null;
+      }
+    },
   },
   vpnId: {
     type: Sequelize.INTEGER,

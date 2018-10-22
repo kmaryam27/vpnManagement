@@ -43,7 +43,15 @@ export default class UserTable extends Component {
               { Header: 'Email', accessor: 'email', maxWidth: 200 },
               { Header: 'First Name', accessor: 'firstName' },
               { Header: 'Last Name', accessor: 'lastName' },
-              { Header: 'Plan #', accessor: 'planId' },
+              {
+                Header: 'Plan #',
+                accessor: 'planId',
+                filterMethod: (filter, row) =>
+                  row[filter.id]
+                    .toString()
+                    .toLowerCase()
+                    .includes(filter.value.toString().toLowerCase()),
+              },
               { Header: 'Expiration', accessor: 'planEnd' },
               { Header: 'Auto-Renew?', accessor: 'autoRenew' },
               { Header: 'VPN ID', accessor: 'vpnId' },

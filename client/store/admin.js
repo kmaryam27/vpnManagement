@@ -32,7 +32,7 @@ const loadData = data => {
 export const loadAdmin = () => async dispatch => {
   try {
     const { data } = await axios.get('/api/users/all');
-    console.log('data should be', data);
+    // console.log('data should be', data);
     dispatch(loadData(data));
   } catch (err) {
     console.error(err);

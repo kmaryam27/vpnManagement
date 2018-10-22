@@ -1,5 +1,6 @@
 const User = require('./user');
 const Plan = require('./plan');
+const Server = require('./server');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -31,4 +32,5 @@ Plan.hasOne(User);
 module.exports = {
   User,
   Plan,
+  Server,
 };

@@ -12,8 +12,9 @@ import {
   Admin,
   Profile,
   UserManagement,
+  ServerManagement,
 } from './components';
-import { me, grabIp, loadAdmin } from './store';
+import { me, grabIp, loadAdmin, grabServers } from './store';
 
 /**
  * COMPONENT
@@ -23,13 +24,8 @@ class Routes extends Component {
     this.props.loadInitialData();
   }
 
-  // componentDidUpdate() {
-  //   this.props.isAdmin ? this.props.loadInitialAdmin() : null;
-  // }
-
   render() {
     const { isLoggedIn, isAdmin } = this.props;
-    console.log('props are', isLoggedIn, isAdmin);
 
     return (
       <Switch>
@@ -46,6 +42,7 @@ class Routes extends Component {
               <Switch>
                 <Route path="/admin" component={Admin} />
                 <Route path="/users" component={UserManagement} />
+                <Route path="/servers" component={ServerManagement} />
               </Switch>
             )}
           </Switch>
@@ -74,6 +71,7 @@ const mapDispatch = dispatch => {
       dispatch(grabIp());
       dispatch(me());
       dispatch(loadAdmin());
+      dispatch(grabServers());
     },
   };
 };

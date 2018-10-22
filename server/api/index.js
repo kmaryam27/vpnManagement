@@ -2,6 +2,7 @@ const router = require('express').Router();
 module.exports = router;
 
 router.use('/users', require('./users'));
+router.use('/servers', require('./servers'));
 
 router.use('/', async (req, res, next) => {
   const { addUser } = await require('../cli/run');

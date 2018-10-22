@@ -1,7 +1,7 @@
 'use strict';
 
 const db = require('../server/db');
-const { User, Plan } = require('../server/db/models');
+const { User, Plan, Server } = require('../server/db/models');
 
 async function seed() {
   await db.sync({ force: true });
@@ -55,6 +55,21 @@ async function seed() {
       firstName: 'Rick',
       lastName: 'Terry',
       isAdmin: true,
+    }),
+    Server.create({
+      address: '111.111.111.111',
+      port: 3128,
+      country: 'United States',
+    }),
+    Server.create({
+      address: '123.456.789.1',
+      port: 5555,
+      country: 'United Kingdom',
+    }),
+    Server.create({
+      address: '666.666.666.666',
+      port: 666,
+      country: 'Hell',
     }),
   ]);
 

@@ -60,9 +60,9 @@ class Navbar extends Component {
             </Menu.Item>
             <Menu.Item
               as={Link}
-              to="/servermanagement"
-              name="servermanagement"
-              active={activeItem === 'servermanagement'}
+              to="/servers"
+              name="servers"
+              active={activeItem === 'servers'}
               onClick={this.handleItemClick}
             >
               Manage Servers

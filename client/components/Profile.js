@@ -10,16 +10,16 @@ export function Profile(props) {
         <Form.Group widths="equal">
           <Form.Field>
             <label>First Name</label>
-            <input name="firstName" placeholder={props.user.firstName} />
+            <input name="firstName" defaultValue={props.user.firstName} />
           </Form.Field>
           <Form.Field>
             <label>Last Name</label>
-            <input name="lastName" placeholder={props.user.lastName} />
+            <input name="lastName" defaultValue={props.user.lastName} />
           </Form.Field>
         </Form.Group>
         <Form.Field>
           <label>Email Address</label>
-          <input name="email" placeholder={props.user.email} />
+          <input name="email" value={props.user.email} disabled />
           {props.error && props.error.email !== undefined ? (
             <Message
               error

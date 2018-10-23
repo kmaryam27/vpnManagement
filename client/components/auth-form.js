@@ -8,7 +8,7 @@ import { Form, Button, Message } from 'semantic-ui-react';
  * COMPONENT
  */
 const AuthForm = props => {
-  const { name, displayName, handleSubmit, error } = props;
+  const { name, handleSubmit, error } = props;
 
   return (
     <div>

@@ -43,7 +43,7 @@ export default class ServerTable extends Component {
             defaultSorted={[{ id: 'id', asc: true }]}
             defaultPageSize={10}
             SubComponent={row => {
-              return <Profile row={row} />;
+              return <Profile className="tableProfile" row={row} />;
             }}
           />
         ) : null}

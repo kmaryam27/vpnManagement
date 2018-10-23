@@ -56,7 +56,7 @@ router.post('/update', async (req, res, next) => {
         let body = req.body;
         await user.update({
           ...user,
-          password: body.newPassword,
+          password: body.newPassword || body.currentPassword,
           firstName: body.firstName || user.firstName,
           lastName: body.lastName || user.lastName,
           email: body.email || user.email,

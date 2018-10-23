@@ -42,7 +42,6 @@ const AuthForm = props => {
  *   can stay DRY with interfaces that are very similar to each other!
  */
 const mapLogin = state => {
-  state.user.error ? console.log('state is', state.user.error) : null;
   return {
     name: 'login',
     displayName: 'Login',

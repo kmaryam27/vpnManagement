@@ -14,7 +14,7 @@ import {
   UserManagement,
   ServerManagement,
 } from './components';
-import { me, grabIp, loadAdmin, grabServers } from './store';
+import { me, grabIp, loadAdmin, grabServers, grabPlans } from './store';
 
 /**
  * COMPONENT
@@ -72,6 +72,7 @@ const mapDispatch = dispatch => {
       dispatch(me());
       dispatch(loadAdmin());
       dispatch(grabServers());
+      dispatch(grabPlans());
     },
   };
 };

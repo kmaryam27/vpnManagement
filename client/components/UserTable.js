@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Table } from 'semantic-ui-react';
 import ReactTable from 'react-table';
+import UserEdit from './editors/UserEdit';
 
-export default class UserTable extends Component {
+export class UserTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -58,6 +59,17 @@ export default class UserTable extends Component {
             ]}
             defaultSorted={[{ id: 'id', asc: true }]}
             defaultPageSize={10}
+            SubComponent={row => {
+              return (
+                <UserEdit
+                  className="tableEdit"
+                  plans={this.props.plans}
+                  updateProfile={this.props.updateUser}
+                  error={false}
+                  row={row}
+                />
+              );
+            }}
           />
         ) : null}
       </div>
@@ -95,16 +107,18 @@ export default class UserTable extends Component {
   }
 }
 
-// const mapState = state => {
-//   return {
-//     // something
-//   };
-// };
+const mapState = state => {
+  return {
+    plans: state.miscellaneous.plans,
+  };
+};
 
-// const mapDispatch = dispatch => {
-//   return {
-//     //something
-//   };
-// };
+const mapDispatch = dispatch => {
+  return {
+    updateUser() {
+      dispatch(edit());
+    },
+  };
+};
 
-// export default connect(mapState, mapDispatch)(UserTable);
+export default connect(mapState)(UserTable);

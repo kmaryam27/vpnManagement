@@ -1,17 +1,19 @@
 import axios from 'axios';
 
-const defaultState = { ip: 0, loading: false, servers: [] };
+const defaultState = { ip: 0, loading: false, servers: [], plans: [] };
 
 // Action Types
 const GET_IP = 'GET_IP';
 const SET_IP = 'SET_IP';
 const GET_SERVERS = 'GET_SERVERS';
 const SET_SERVERS = 'SET_SERVERS';
+const SET_PLANS = 'SET_PLANS';
 
 // Action Creators
 const getIP = () => ({ type: 'GET_IP', loading: true });
 const setIp = ip => ({ type: SET_IP, ip });
-const setServers = servers => ({ type: 'SET_SERVERS', servers });
+const setServers = servers => ({ type: SET_SERVERS, servers });
+const setPlans = plans => ({ type: SET_PLANS, plans });
 
 // Thunk Creators
 // export const grabIp = () => async dispatch => {
@@ -35,6 +37,15 @@ export const grabServers = () => async dispatch => {
   }
 };
 
+export const grabPlans = () => async dispatch => {
+  try {
+    const { data } = await axios.get('/api/plans/all');
+    dispatch(setPlans(data));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 // Reducer
 export default function(state = defaultState, action) {
   switch (action.type) {
@@ -46,6 +57,8 @@ export default function(state = defaultState, action) {
       return { ...state, loading: true };
     case SET_SERVERS:
       return { ...state, servers: action.servers, loading: false };
+    case SET_PLANS:
+      return { ...state, loading: false, plans: action.plans };
     default:
       return state;
   }

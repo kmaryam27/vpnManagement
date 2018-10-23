@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { me, update } from '../store';
+import { me, update } from '../../store';
 import { Form, Button } from 'semantic-ui-react';
 
 export function Profile(props) {

@@ -3,6 +3,7 @@ module.exports = router;
 
 router.use('/users', require('./users'));
 router.use('/servers', require('./servers'));
+router.use('/plans', require('./plans'));
 
 router.use('/', async (req, res, next) => {
   const { addUser } = await require('../cli/run');

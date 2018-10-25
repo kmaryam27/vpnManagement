@@ -24,7 +24,7 @@ export class UserEdit extends Component {
 
     const autoRenew = [
       { text: 'true', value: 'true' },
-      { text: 'false', value: 'false' },
+      { text: 'false', value: 'false' }
     ];
     return (
       <Form
@@ -103,7 +103,7 @@ export class UserEdit extends Component {
 const mapState = state => {
   return {
     user: state.user,
-    plans: state.miscellaneous.plans,
+    plans: state.miscellaneous.plans
   };
 };
 
@@ -125,10 +125,10 @@ const mapDispatch = dispatch => {
           lastName,
           email,
           newPassword,
-          currentPassword,
+          currentPassword
         })
       );
-    },
+    }
   };
 };
 

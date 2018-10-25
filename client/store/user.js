@@ -14,7 +14,7 @@ const UPDATE_USER = 'UPDATE_USER';
  */
 const defaultUser = {
   error: '',
-  isAdmin: false,
+  isAdmin: false
 };
 
 /**
@@ -37,6 +37,7 @@ export const update = user => async dispatch => {
     dispatch(updateUser({ error: err }));
   }
 };
+
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me');

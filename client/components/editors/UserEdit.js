@@ -7,7 +7,7 @@ import { edit } from '../../store';
 export class UserEdit extends Component {
   constructor(props) {
     super(props);
-    this.state = { plan: '' };
+    this.state = { plan: this.props.planId };
     console.log('user is', this.props.row.original);
   }
 
@@ -34,13 +34,18 @@ export class UserEdit extends Component {
         plans.push({ text: plan.name, value: plan.id });
       });
     }
+    console.log('plans are', plans);
 
     const autoRenew = [
       { text: 'true', value: 'true' },
       { text: 'false', value: 'false' }
     ];
     return (
-      <Form className={this.props.className} onSubmit={this.handleSubmit} error>
+      <Form
+        className={this.props.className}
+        onSubmit={this.props.updateProfile}
+        error
+      >
         <Form.Group widths="equal">
           <Form.Field>
             <label>First Name</label>
@@ -77,6 +82,7 @@ export class UserEdit extends Component {
             selection
             options={plans}
             onChange={this.handleSelect}
+            defaultValue={plans[this.props.row.original.planId - 1].value}
             // loading={this.props.plans ? false : true}
             // value={this.props.row.original.plan}
           />
@@ -120,22 +126,21 @@ const mapDispatch = dispatch => {
     loadProfile: function() {
       dispatch(me());
     },
-    updateProfile: function(evt) {
-      console.log('target is', evt.target.plan);
+    updateProfile: function(evt, { name, value }) {
       evt.preventDefault();
       const firstName = evt.target.firstName.value || undefined;
       const lastName = evt.target.lastName.value || undefined;
-      const plan = evt.target.plan.value || undefined;
-      const expiration = evt.target.expiration.value || undefined;
-      const renew = evt.target.renew.value || undefined;
+      // const plan = evt.target.plan.value || undefined;
+      // const expiration = evt.target.expiration.value || undefined;
+      // const renew = evt.target.renew.value || undefined;
 
-      console.log('new user is', {
-        firstName,
-        lastName,
-        plan,
-        expiration,
-        renew
-      });
+      // console.log('new user is', {
+      //   firstName,
+      //   lastName,
+      //   plan,
+      //   expiration,
+      //   renew
+      // });
 
       dispatch(
         update({
